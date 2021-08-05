@@ -7,3 +7,14 @@
     display: flex;
     flex-wrap: wrap;
 }
+
+.choice-product {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 10%;
+}
+
+#lenseChoice {
+    text-align-last: center;
+}
