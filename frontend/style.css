@@ -18,3 +18,13 @@
 #lenseChoice {
     text-align-last: center;
 }
+
+.panier { 
+    display: flex;
+    flex-direction: column;
+}
+
+.cartProductPicture { 
+    height: 10%;
+    width: 20%;
+}

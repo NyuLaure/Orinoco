@@ -4,11 +4,57 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mon panier</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>  
+    <link rel="stylesheet" href="style.css">
+    <title>Ornicoro - Personnalisez votre caméra</title>
+
 </head>
 <body>
+    <header class=bg-dark>
+        <div class="container">
+             <div class ="row">
+                <nav class="col navbar navbar-expand-lg bg-dark navbar-dark">
+                    <a class="navbar-brand" href="index.html">Orinoco</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div id="navbarContent" class="collapse navbar-collapse justify-content-end">
+                        <ul class="navbar-nav">
+                              <li class="nav-item active"><a class="nav-link" href="index.html">Accueil</a></li>
+                              <li class="nav-item-active"><a class="nav-link" href="panier.html">Panier</a></li>
+                         </ul>
+                     </div>
+                 </nav>
+             </div>
+        </div>
+     </header>
+
+    <section>
+        <h1 class="text-center">Votre commande</h1>
+            <div class="container">
+                <div class="row">
+                     <div class="form-group panier col-lg-6 p-2">
+                        <form action="MONDOSSIERPHP" method="post">
+                            <label class="col-form-label" for="firstName">Prénom : </label>
+                            <input class="form-control" type="text" name="firstName" id="firstName"  placeholder="Laure">
+                            <label class="col-form-label" for="lastName">Nom : </label>
+                            <input class="form-control" type="text" name="lastName" id="lastName" placeholder="Durand">
+                            <label class="col-form-label" for="address">Adresse : </label>
+                            <input class="form-control" type="text" name="address" id="adress" placeholder="12 chemin de la plaine">
+                            <label class="col-form-label" for="city">Ville : </label>
+                            <input class="form-control" type="text" name="city" id="city" placeholder="Paris">
+                            <label class="col-form-label" for="mail">Mail : </label>
+                            <input class="form-control" type="email" name="mail" id="mail" placeholder="Ornicoro@contact.fr">
+                            <button class="btn btn-primary mt-5">Envoyez votre commande</button>
+                        </form>
+                    </div>
+                    <div id="finalCart" class="col-lg-6"></div>
+                </div>
+            </div>
+    </section>
     
-    <script src="produit.js"></script>
     <script src="panier.js"></script>
 </body>
 </html>

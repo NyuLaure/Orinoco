@@ -26,10 +26,10 @@ fetch("http://localhost:3000/api/cameras")
     for ( let i=0; i<global.length; i++){
         var products = `
             <div  class="col-sm-12 col-md-6 col-lg-4 mb-5 mt-5 text-center " >
-                <p>${global[i].name} </p> 
-                <p>${global[i].price/100},00€ </p> 
-                <img class="image" src="${global[i].imageUrl}"/>
-                <p>${global[i].description}</p> 
+                <p id="productName">${global[i].name} </p> 
+                <p id="productPrice">${global[i].price/100},00€</p> 
+                <img id="productPicture" class="image" src="${global[i].imageUrl}"/>
+                <p id="productDescription">${global[i].description}</p> 
                 <a href="produit.html?id=${global[i]._id}" type="button" class="btn btn-secondary " id="seeProductButton" data-id="${global[i]._id} data-name="${global[i].name}" data-price="${global[i].price/100},00€" > Voir le produit </a>
             </div>`;
         

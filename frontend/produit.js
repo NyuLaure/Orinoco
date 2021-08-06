@@ -4,9 +4,9 @@
 
 let id_url = new URLSearchParams(document.location.search);
 let monId = id_url.get("id");
-console.log(monId);
 
-var quantityValue;
+
+var quantityValue = 1;
 var lenseModel;
 
 fetch("http://localhost:3000/api/cameras") 
@@ -24,10 +24,10 @@ fetch("http://localhost:3000/api/cameras")
                 
                 var infoProduct = `
                 <div>
-                    <p>${global[i].name} </p> 
-                    <p>${global[i].price/100},00€ </p> 
-                    <img class="image" src="${global[i].imageUrl}"/>
-                    <p>${global[i].description}</p>
+                    <p id="productName">${global[i].name}</p> 
+                    <p id="productPrice">${global[i].price/100},00€</p> 
+                    <img id ="productPicture" class="image" src="${global[i].imageUrl}"/>
+                    <p id"productDescription">${global[i].description}</p>
                 </div>`;
 
                 Produit.innerHTML = infoProduct;
@@ -62,4 +62,30 @@ fetch("http://localhost:3000/api/cameras")
         sendValue.addEventListener('click', function(cart) {
             var 
         }) */
+
+        let productName = document.getElementById("productName").textContent;
+        let productPrice = document.getElementById("productPrice").textContent;
+        let productPicture = document.getElementById("productPicture").src;
+
+        let addToCartBtn = document.getElementById("addToCart");
+        addToCartBtn.addEventListener('click', function(event) {
+            let productOptions = [monId, Number(quantityValue), productName, productPrice, productPicture];
+            if (!window.localStorage.getItem("produits")) {
+                window.localStorage.setItem("produits", JSON.stringify([]));
+                let tempCart = JSON.parse(window.localStorage.getItem("produits"));
+                tempCart.push(productOptions);
+                window.localStorage.setItem("produits", JSON.stringify(tempCart));
+            
+            } else {
+                let tempCart = JSON.parse(window.localStorage.getItem("produits"));
+                tempCart.push(productOptions);
+                window.localStorage.setItem("produits", JSON.stringify(tempCart));
+                /*
+                window.localStorage.setItem("produits", window.localStorage.getItem("produits") + JSON.stringify(productOptions));
+                */
+            }
+
+                alert("Le produit a été ajouté au panier");
+                //window.location.href = "http://localhost:5500/frontend/index.html";
+        })
     });
