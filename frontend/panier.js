@@ -1,3 +1,4 @@
+// Affichage du produit mit dans le panier
 let tempCart = JSON.parse(window.localStorage.getItem("produits"))[0];
 
 let finalCart = document.getElementById("finalCart");

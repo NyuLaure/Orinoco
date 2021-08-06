@@ -9,6 +9,7 @@ let monId = id_url.get("id");
 var quantityValue = 1;
 var lenseModel;
 
+// Recuperation les infos produits de l'API
 fetch("http://localhost:3000/api/cameras") 
     .then(function(res) {
         if (res.ok) {
@@ -35,6 +36,7 @@ fetch("http://localhost:3000/api/cameras")
             }
         }
 
+        // Choix de la lentille 
         let lenseChoiceContent = document.getElementById("lenseChoice");
         for (let j = 0; j < global[i].lenses.length; j++) {
             lenseChoiceContent.innerHTML += `
@@ -56,13 +58,9 @@ fetch("http://localhost:3000/api/cameras")
             e.stopPropagation();
             lenseModel = e.target.value;
         });
-/*
-        //Envoie des données dans le panier 
-        let sendValue = document.getElementById("addToCart");
-        sendValue.addEventListener('click', function(cart) {
-            var 
-        }) */
+        
 
+        //Envoie des données dans le panier 
         let productName = document.getElementById("productName").textContent;
         let productPrice = document.getElementById("productPrice").textContent;
         let productPicture = document.getElementById("productPicture").src;
