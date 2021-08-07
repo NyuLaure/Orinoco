@@ -2,18 +2,19 @@
 let myCart = JSON.parse(window.localStorage.getItem("produits"));
 let finalCart = document.getElementById("finalCart");
 
-for ( let i=0; i<myCart.lenght; i++) {
-    
-}
-var final = `
+for ( let i=0; i<myCart.length; i++) {
+    var final = `
     <div class="text-center">
-        <p class="cartProductName">${myCart[2]}</p>
-        <p class="cartQuantityValue">${myCart[1]}</p>
-        <p class="cartProductPrice">${myCart[3]}</p>
-        <img src="${myCart[4]}" class="cartProductPicture"/>
+        <p class="cartProductName">${myCart[i][2]}</p>
+        <p class="cartQuantityValue">${myCart[i][1]}</p>
+        <p class="cartProductPrice">${myCart[i][3]}</p>
+        <img src="${myCart[i][4]}" class="cartProductPicture"/>
     </div>
     `;
-finalCart.innerHTML += final;
+    finalCart.innerHTML += final;  
+}
+
+
 
 //envoie données boutons envoie formulaire
 
@@ -24,7 +25,11 @@ cartButton.addEventListener('click', function(event) {
     document.location.href = 'http://localhost:5500/frontend/merci.html';
 });
 
-// recuperations des informations du panier 
+function emptyCart() {
+    localStorage.removeItem("produits");
+}
+
+
 
 
 
