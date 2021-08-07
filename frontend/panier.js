@@ -1,18 +1,35 @@
 // Affichage du produit mit dans le panier
 let myCart = JSON.parse(window.localStorage.getItem("produits"));
 let finalCart = document.getElementById("finalCart");
+var finalPrice = Number();
 
-for ( let i=0; i<myCart.length; i++) {
-    var final = `
-    <div class="text-center">
+for (let i=0; i<myCart.length; i++) {
+    let final = `
+    <div class="text-center>
         <p class="cartProductName">${myCart[i][2]}</p>
         <p class="cartQuantityValue">${myCart[i][1]}</p>
         <p class="cartProductPrice">${myCart[i][3]}</p>
-        <img src="${myCart[i][4]}" class="cartProductPicture"/>
+        <img src="${myCart[i][4]}" class="cartProductPicture mb-5"/>
     </div>
     `;
-    finalCart.innerHTML += final;  
+    finalCart.innerHTML += final;
+
+    //calcul du prix total du panier
+    let tempPrice = myCart[i][3];
+    tempPrice = tempPrice.replace(",",".");
+    tempPrice = tempPrice.slice(0, -1);
+    tempPrice = Number(tempPrice);
+
+    finalPrice += tempPrice;  
 }
+
+if(!String(finalPrice).includes(".")) {
+    document.getElementById("finalCart").innerHTML += "<p id='finalPrice'>" + String(finalPrice) + ",00€" + "</p>";
+}
+else {
+    document.getElementById("finalCart").innerHTML += "<p id='finalPrice'>" + String(finalPrice) + "€" + "</p>";
+}
+
 
 
 

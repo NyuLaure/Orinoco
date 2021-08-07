@@ -28,3 +28,7 @@
     height: 10%;
     width: 20%;
 }
+
+#finalPrice { 
+    border-top: 2px solid black;
+}
