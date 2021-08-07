@@ -58,7 +58,7 @@ fetch("http://localhost:3000/api/cameras")
             e.stopPropagation();
             lenseModel = e.target.value;
         });
-        
+
 
         //Envoie des données dans le panier 
         let productName = document.getElementById("productName").textContent;
@@ -78,12 +78,9 @@ fetch("http://localhost:3000/api/cameras")
                 let tempCart = JSON.parse(window.localStorage.getItem("produits"));
                 tempCart.push(productOptions);
                 window.localStorage.setItem("produits", JSON.stringify(tempCart));
-                /*
-                window.localStorage.setItem("produits", window.localStorage.getItem("produits") + JSON.stringify(productOptions));
-                */
+               
             }
 
                 alert("Le produit a été ajouté au panier");
-                //window.location.href = "http://localhost:5500/frontend/index.html";
         })
     });
