@@ -1,3 +1,56 @@
+//FONCTIONS
+//permet de recuperer les information de contact pour requete POST
+function reqDataContact() {
+    let firstName = document.getElementById('firstName').value;
+    let lastName = document.getElementById('lastName').value;
+    let address = document.getElementById('address').value;
+    let city = document.getElementById('city').value;
+    let email = document.getElementById('mail').value;
+    let contact = {
+        firstName: firstName,
+        lastName: lastName,
+        address: address,
+        city: city,
+        email: email
+    };
+    return contact;
+}
+
+//permet de recuperer l'ensemble des id des produits du panier
+function reqDataProducts() {
+    var products = [];
+    for (let i = 0; i < JSON.parse(localStorage.produits).length; i++) {
+        products.push(JSON.parse(localStorage.produits)[i][0]);
+    }
+    return products;
+}
+
+//envoi une requete 'POST' a /order avec les informations de contact et id du panier
+//pour recuperation du orderId
+function getOrderId(varContact, varProducts){
+    (async() => {
+        const rawResponse = await fetch('http://localhost:3000/api/cameras/order', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({contact: varContact, products: varProducts})
+        });
+            var content = await rawResponse.json();
+            orderId = content.orderId;
+            localStorage.setItem("orderId", orderId);
+            document.location.href = 'http://localhost:5500/frontend/merci.html';
+    })();
+}
+
+//permet de vider le panier
+function emptyCart() {
+    localStorage.removeItem("produits");
+}
+
+
+
 // Affichage du produit mit dans le panier
 let myCart = JSON.parse(window.localStorage.getItem("produits"));
 let finalCart = document.getElementById("finalCart");
@@ -38,17 +91,17 @@ localStorage.setItem("prixTotal", finalPriceRecap);
 
 
 //envoie données boutons envoie formulaire
-
 let cartButton = document.getElementById("cartButton");
+var orderId = "";
 
 cartButton.addEventListener('click', function(event) {
     event.preventDefault();
-    document.location.href = 'http://localhost:5500/frontend/merci.html';
+    let dataContact = reqDataContact();
+    let dataProductsId = reqDataProducts();
+    getOrderId(dataContact, dataProductsId);
+    emptyCart();
 });
 
-function emptyCart() {
-    localStorage.removeItem("produits");
-}
 
 
 
