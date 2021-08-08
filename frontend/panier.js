@@ -16,9 +16,10 @@ for (let i=0; i<myCart.length; i++) {
 
     //calcul du prix total du panier
     let tempPrice = myCart[i][3];
+    let tempQuantity = myCart[i][1];
     tempPrice = tempPrice.replace(",",".");
     tempPrice = tempPrice.slice(0, -1);
-    tempPrice = Number(tempPrice);
+    tempPrice = Number(tempPrice * tempQuantity);
 
     finalPrice += tempPrice;  
 }
