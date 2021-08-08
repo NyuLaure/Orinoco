@@ -30,6 +30,9 @@ else {
     document.getElementById("finalCart").innerHTML += "<p id='finalPrice'>" + String(finalPrice) + "€" + "</p>";
 }
 
+//enregistrement du prix total dans le localStorage
+let finalPriceRecap = document.getElementById("finalPrice").textContent;
+localStorage.setItem("prixTotal", finalPriceRecap);
 
 
 

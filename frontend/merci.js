@@ -1,0 +1,1 @@
+document.getElementsByClassName("lastRecap")[0].innerHTML += "d'un total de: " + localStorage.getItem("prixTotal");
