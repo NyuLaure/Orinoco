@@ -1,18 +1,32 @@
+//VARIABLES 
+var firstName = "";
+var lastName = "";
+var address = "";
+var city = "";
+var email = "";
+
+
 //FONCTIONS
-//permet de recuperer les information de contact pour requete POST
+
+function check_contact(varContact) {
+    
+}
+
 function reqDataContact() {
-    let firstName = document.getElementById('firstName').value;
-    let lastName = document.getElementById('lastName').value;
-    let address = document.getElementById('address').value;
-    let city = document.getElementById('city').value;
-    let email = document.getElementById('mail').value;
-    let contact = {
+    firstName = document.getElementById('firstName').value;
+    lastName = document.getElementById('lastName').value;
+    address = document.getElementById('address').value;
+    city = document.getElementById('city').value;
+    email = document.getElementById('mail').value;
+    contact = {
         firstName: firstName,
         lastName: lastName,
         address: address,
         city: city,
         email: email
     };
+
+
     return contact;
 }
 
@@ -104,6 +118,113 @@ cartButton.addEventListener('click', function(event) {
 
 
 
+//On met la premiere lettre du prenom en majuscule et le reste en minuscule
 
 
+/*
 
+//first_name[0].toUpperCase() + first_name.slice(1).toLowerCase()
+
+//Creation d'une regex qui teste que le premier caractere est en maj et le reste en min
+let regName = "/^[A-Z][a-z]*$/"
+
+//Booleen pour valider le prenom
+let validFirstName = False;
+
+//On verifie que le prenom repond bien aux critères de la regex
+if (regName.test(first_name))  //Si le prenom repond aux critères
+{
+    validFirstName = True;          //Le prenom est valide
+}
+
+
+//Regex et conditions pour le nom de famille 
+last_name = last_name[0].toUpperCase() + last_name.slice(1).toLowerCase();
+
+let validLastName = False; 
+
+if (regName.test(last_name)) 
+{
+    validLastName = True;
+}
+
+//Regex et conditions pour l'adresse 
+address = address[0].toUpperCase() + address.slice(1).toLowerCase();
+
+let regAddress = /^[a-zA-Z0-9\s,'-]*$/
+
+let address = False; 
+
+if (regAddress.test(address)) 
+{
+    validaddress = True;
+}
+
+//Regex et conditions pour la ville 
+city = city[0].toUpperCase() + city.slice(1).toLowerCase();
+
+let validcity = False; 
+
+let regcity = /^[a-zA-Z0-9\s-]*$/
+
+if (regcity.test(city)) 
+{
+    validcity = True;
+}
+
+//Regex et conditions pour l'adresse mail 
+mail = mail.toLowerCase();
+
+let regmail = /^[a-z0-9-.]+@[a-z0-9-.]+.[a-z]+$/
+
+let mail = False; 
+
+if (regmail.test(mail)) 
+{
+    validmail = True;
+}
+*/
+
+
+//VARIABLES 
+
+//Recuperation des valeurs entrées dans le formulaire
+/*
+//Prenom
+var first_name_value = "";
+let first_name = document.getElementById("firstName");
+first_name.addEventListener('input', function(e_first_name) {
+    first_name_value = e_first_name.target.value;
+});
+
+//Nom
+var last_name_value = "";
+let last_name = document.getElementById("lastName");
+last_name.addEventListener('input', function(e_last_name) {
+    last_name_value = e_last_name.target.value;
+});
+
+//Adresse
+var address_value = "";
+let address = document.getElementById("address");
+address.addEventListener('input', function(e_address) {
+    address_value = e_address.target.value;
+});
+
+//Ville
+var city_value = "";
+let city = document.getElementById("city");
+city.addEventListener('input', function(e_city) {
+    city_value = e_city.target.value;
+});
+
+//Mail
+var mail_value = "";
+let mail = document.getElementById("mail");
+mail.addEventListener('input', function(e_mail) {
+    mail_value = e_mail.target.value;
+});
+*/
+
+//FONCTIONS
+//Creation du formulaire de contact et envoi de la requete POST
