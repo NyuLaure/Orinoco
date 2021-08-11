@@ -16,14 +16,14 @@ function checkFirstLastName(prenom, nom) {
     let boolArray = [];
     if (!reg.test(prenom))
     {
-        console.log("Prenom invalide");
+        console.error("Prenom invalide");
         firstNameValid = false;
     } else {
         firstNameValid = true;
     }
     if (!reg.test(nom))
     {
-        console.log("Nom invalide");
+        console.error("Nom invalide");
         lastNameValid = false;
     } else {
         lastNameValid = true;

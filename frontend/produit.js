@@ -1,10 +1,7 @@
-
 // extraire l'id 
-
 
 let id_url = new URLSearchParams(document.location.search);
 let monId = id_url.get("id");
-
 
 var quantityValue = 1;
 var lenseModel;
@@ -80,7 +77,6 @@ fetch("http://localhost:3000/api/cameras")
                 window.localStorage.setItem("produits", JSON.stringify(tempCart));
                
             }
-
                 alert("Le produit a été ajouté au panier");
         })
     });

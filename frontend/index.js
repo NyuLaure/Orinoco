@@ -1,17 +1,4 @@
-//console.log(global[0]._id, global[1].price);
-
 var item = document.getElementById("items");
-
-// item.innerHTML=global[0]._id + global[0].price + global[0].name;
-
-//for ( let i=0; i<global.length; i++){
-   // item.innerHTML+="<p>" + global[i].name + "</p>" ;
-  //  item.innerHTML+="<p>" + global[i].price/100 +",00€" + "</p>" ;
-  //  item.innerHTML+='<img class="image" src="' + global[i].imageUrl + '"/>';
-  //  item.innerHTML+="<p>" + global[i].description + "</p>" ;
-//  }
-
-
 
 fetch("http://localhost:3000/api/cameras") 
     .then(function(res) {
@@ -35,7 +22,4 @@ fetch("http://localhost:3000/api/cameras")
         
         item.innerHTML+=products;
     }
-    
 }); 
-
-
