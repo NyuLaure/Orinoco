@@ -180,7 +180,7 @@ try {
         </div>
         `;
         finalCart.innerHTML += final;
-    
+        
         //calcul du prix total du panier
         let tempPrice = myCart[i][3];
         let tempQuantity = myCart[i][1];
