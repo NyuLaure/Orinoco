@@ -163,7 +163,23 @@ function emptyCart() {
     localStorage.removeItem("produits");
 }
 
-
+//permet de supprimer un article
+function deleteArticle(articleId) {
+    let cart = JSON.parse(localStorage.produits);
+    try {
+        for (let i = 0; i < cart.length; i++) {
+            for (let j = 0; j < cart[i].length; j++) {
+                if (cart[i][j] === articleId) {
+                    cart.pop(i);
+                    emptyCart();
+                    localStorage.setItem("produits", JSON.stringify(cart));
+                }
+            }
+        }
+    } catch (error) {
+        return;
+    } 
+}
 
 // Affichage du produit mit dans le panier
 let myCart = JSON.parse(window.localStorage.getItem("produits"));
@@ -172,11 +188,12 @@ var finalPrice = Number();
 try {
     for (let i=0; i<myCart.length; i++) {
         let final = `
-        <div class="text-center>
+        <div id=${myCart[i][0]} class="text-center">
             <p class="cartProductName">${myCart[i][2]}</p>
             <p class="cartQuantityValue">${myCart[i][1]}</p>
             <p class="cartProductPrice">${myCart[i][3]}</p>
             <img src="${myCart[i][4]}" class="cartProductPicture mb-5"/>
+            <button class="deleteArticle">Supprimer cet article</button>
         </div>
         `;
         finalCart.innerHTML += final;
@@ -204,3 +221,26 @@ else {
 //enregistrement du prix total dans le localStorage
 let finalPriceRecap = document.getElementById("finalPrice").textContent;
 localStorage.setItem("prixTotal", finalPriceRecap);
+
+
+
+//Il s'agit d'une creation d'evenement dynamique (s'incrémentera en fonction du nb d'articles)
+//Recuperation d'une HTML collection (tableau) correspondant aux articles dans panier.html
+//On parcour l'ensemble des articles
+let articlesCollection = document.getElementsByClassName("deleteArticle");
+for (let i = 0; i < articlesCollection.length; i++){
+    //On recupere l'id de la div que l'on parcour grace à parentElement qui pointe sur la div parente au boutton
+    //Puis on utilise la propriété .id qui renvoie l'id de la div
+    let articleDivId = articlesCollection[i].parentElement.id;
+    console.log(articleDivId);
+    //Maintenant on ajoute un evenement à articlesCollection[i] correspondant au bouton de la div courante
+    //Au click on appelle la fonction deleteArticle qui prend en argument l'id de la div courante
+    articlesCollection[i].addEventListener('click', function(e) {
+        e.stopPropagation();
+        deleteArticle(articleDivId);
+        //Affichage d'une pop-up indiquant que l'article a été supprimé
+        alert("L'article a été supprimé.")
+        //Raffraichissement de la page
+        location.reload()
+    });
+}
