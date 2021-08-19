@@ -163,24 +163,6 @@ function emptyCart() {
     localStorage.removeItem("produits");
 }
 
-//permet de supprimer un article
-function deleteArticle(articleId) {
-    let cart = JSON.parse(localStorage.produits);
-    try {
-        for (let i = 0; i < cart.length; i++) {
-            for (let j = 0; j < cart[i].length; j++) {
-                if (cart[i][j] === articleId) {
-                    cart.pop(i);
-                    emptyCart();
-                    localStorage.setItem("produits", JSON.stringify(cart));
-                }
-            }
-        }
-    } catch (error) {
-        return;
-    } 
-}
-
 // Affichage du produit mit dans le panier
 let myCart = JSON.parse(window.localStorage.getItem("produits"));
 let finalCart = document.getElementById("finalCart");
@@ -197,6 +179,7 @@ try {
         </div>
         `;
         finalCart.innerHTML += final;
+        
         
         //calcul du prix total du panier
         let tempPrice = myCart[i][3];
@@ -222,7 +205,23 @@ else {
 let finalPriceRecap = document.getElementById("finalPrice").textContent;
 localStorage.setItem("prixTotal", finalPriceRecap);
 
-
+//permet de supprimer un article
+function deleteArticle(articleId) {
+    let cart = JSON.parse(localStorage.produits);
+    try {
+        for (let i = 0; i < cart.length; i++) {
+            for (let j = 0; j < cart[i].length; j++) {
+                if (cart[i][j] === articleId) {
+                    cart.pop(i);
+                    emptyCart();
+                    localStorage.setItem("produits", JSON.stringify(cart));
+                }
+            }
+        }
+    } catch (error) {
+        return;
+    } 
+}
 
 //Il s'agit d'une creation d'evenement dynamique (s'incrémentera en fonction du nb d'articles)
 //Recuperation d'une HTML collection (tableau) correspondant aux articles dans panier.html
